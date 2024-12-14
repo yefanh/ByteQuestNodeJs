@@ -2,23 +2,34 @@ import { StickyWrapper } from '@/components/sticky-wrapper';
 import { FeedWrapper } from '@/components/feed-wrapper';
 import { UserProgress } from '@/components/user-progress';
 import { Header } from './header';
-import { getUserProgress, getUnits } from '@/db/queries';
+import { getUserProgress, getUnits, getCourseProgress, getLessonPercentage } from '@/db/queries';
 import { redirect } from 'next/navigation';
 import { Unit } from './unit';
+import { lessons, units as unitsSchema } from '@/db/schema';
 
 const LearnPage = async() => {
   const userProgressData = getUserProgress();
+  const courseProgressData = getCourseProgress();
+  const lessonPercentageData = getLessonPercentage();
   const unitsData = getUnits();
 
   const [
     userProgress,
-    units
+    units,
+    courseProgress,
+    lessonPercentage,
   ] = await Promise.all([
     userProgressData,
     unitsData,
+    courseProgressData,
+    lessonPercentageData,
   ]);
 
   if (!userProgress || !userProgress.activeCourse) {
+    redirect("/courses");
+  }
+
+  if (!courseProgress) {
     redirect("/courses");
   }
 
@@ -43,12 +54,10 @@ const LearnPage = async() => {
               description={unit.description}
               title={unit.title}
               lessons={unit.lessons}
-              // activeLesson={courseProgress.activeLesson as typeof lessons.$inferSelect & {
-              //   unit: typeof unitsSchema.$inferSelect;
-              // } | undefined}
-              // activeLessonPercentage={lessonPercentage}
-              activeLesson={undefined}
-              activeLessonPercentage={0}
+              activeLesson={courseProgress.activeLesson as typeof lessons.$inferSelect & {
+                unit: typeof unitsSchema.$inferSelect;
+              } | undefined}
+              activeLessonPercentage={lessonPercentage}
             />
           </div>
         ))}
