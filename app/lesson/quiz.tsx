@@ -1,9 +1,11 @@
 "use client";
 
+// import { challengeOptions, challenges, userSubscription } from "@/db/schema";
 import { challengeOptions, challenges} from "@/db/schema";
 import { useState, useTransition } from "react";
 import { Header } from "./header";
 import { QuestionBubble } from "./question-bubble";
+import { Challenge } from "./challenge";
 
 type Props ={
   initialPercentage: number;
@@ -13,7 +15,9 @@ type Props ={
     completed: boolean;
     challengeOptions: typeof challengeOptions.$inferSelect[];
   })[];
-  
+  // userSubscription: typeof userSubscription.$inferSelect & {
+  //   isActive: boolean;
+  // } | null;
   userSubscription: any;
 };
 
@@ -35,7 +39,9 @@ export const Quiz = ({
     return uncompletedIndex === -1 ? 0 : uncompletedIndex;
   });
 
-  const challenge = challenges[activeIndex];
+  const challenge = challenges[activeIndex]; //current challenge
+  const options = challenge?.challengeOptions ?? [];
+
 
   const title = challenge.type === "ASSIST" 
     ? "Select the correct answer" 
@@ -58,6 +64,22 @@ export const Quiz = ({
               {challenge.type === "ASSIST" && (
                 <QuestionBubble question={challenge.question} />
               )}
+              {/* <Challenge
+                options={options}
+                onSelect={onSelect}
+                status={status}
+                selectedOption={selectedOption}
+                disabled={pending}
+                type={challenge.type}
+              /> */}
+              <Challenge
+                options={options}
+                onSelect={() => {}}
+                status="correct"
+                selectedOption={undefined}
+                disabled={false}
+                type={challenge.type}
+              />
             </div>
           </div>
         </div>
