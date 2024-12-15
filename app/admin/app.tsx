@@ -12,9 +12,9 @@ import { UnitList } from "./unit/list";
 import { UnitEdit } from "./unit/edit";
 import { UnitCreate } from "./unit/create";
 
-// import { LessonList } from "./lesson/list";
-// import { LessonEdit } from "./lesson/edit";
-// import { LessonCreate } from "./lesson/create";
+import { LessonList } from "./lesson/list";
+import { LessonEdit } from "./lesson/edit";
+import { LessonCreate } from "./lesson/create";
 
 // import { ChallengeList } from "./challenge/list";
 // import { ChallengeEdit } from "./challenge/edit";
@@ -45,9 +45,9 @@ const App = () => {
       />
       <Resource
         name="lessons"
-        // list={LessonList}
-        // create={LessonCreate}
-        // edit={LessonEdit}
+        list={LessonList}
+        create={LessonCreate}
+        edit={LessonEdit}
         recordRepresentation="title"
       />
       <Resource
