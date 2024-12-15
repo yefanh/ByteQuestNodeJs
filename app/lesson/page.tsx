@@ -1,22 +1,23 @@
+//bytequest/app/lesson/page.tsx
 import { redirect } from "next/navigation";
-// import { getLesson, getUserProgress, getUserSubscription } from "@/db/queries";
-import { getLesson, getUserProgress} from "@/db/queries";
+import { getLesson, getUserProgress, getUserSubscription } from "@/db/queries";
+// import { getLesson, getUserProgress} from "@/db/queries";
 
 import { Quiz } from "./quiz";
 
 const LessonPage = async () => {
   const lessonData = getLesson();
   const userProgressData = getUserProgress();
-  // const userSubscriptionData = getUserSubscription();
+  const userSubscriptionData = getUserSubscription();
 
   const [
     lesson,
     userProgress,
-//     userSubscription,
+    userSubscription,
   ] = await Promise.all([
     lessonData,
     userProgressData,
-//     userSubscriptionData,
+    userSubscriptionData,
   ]);
 
   if (!lesson || !userProgress) {
@@ -33,8 +34,8 @@ const LessonPage = async () => {
       initialLessonChallenges={lesson.challenges}
       initialHearts={userProgress.hearts}
       initialPercentage={initialPercentage}
-      // userSubscription={userSubscription}
-      userSubscription={null}
+      userSubscription={userSubscription}
+      // userSubscription={null}
     />
   );
 };

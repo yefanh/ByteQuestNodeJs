@@ -1,3 +1,4 @@
+//bytequest/app/(marketing)/page.tsx
 import Image from "next/image";
 import { ClerkLoaded, ClerkLoading, SignedIn, SignedOut, SignUpButton, SignInButton } from "@clerk/nextjs";
 import {Loader} from "lucide-react";

@@ -1,3 +1,4 @@
+//bytequest/app/(main)/shop/page.tsx
 import Image from "next/image";
 import { redirect } from "next/navigation";
 

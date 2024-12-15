@@ -1,3 +1,4 @@
+//bytequest/app/api/lessons/[lessonId] /route.ts
 import { eq } from "drizzle-orm";
 import { NextResponse } from "next/server";
 

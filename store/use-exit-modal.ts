@@ -1,3 +1,4 @@
+//bytequest/store/use-exit-modal.ts
 import { create } from "zustand";
 
 type ExitModalState = {

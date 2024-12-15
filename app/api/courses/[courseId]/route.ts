@@ -1,4 +1,4 @@
-//app/api/courses/[courseId]/route.ts
+//bytequest/app/api/courses/[courseId]/route.ts
 import { eq } from "drizzle-orm";
 import { NextResponse } from "next/server";
 

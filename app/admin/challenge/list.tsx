@@ -1,3 +1,4 @@
+//bytequest/app/admin/challenge/list.tsx
 import { Datagrid, List, TextField, ReferenceField, NumberField, SelectField } from "react-admin";
 
 export const ChallengeList = () => {

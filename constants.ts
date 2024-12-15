@@ -1,3 +1,4 @@
+//bytequest/constants.ts
 export const POINTS_TO_REFILL = 10;
 
 export const quests = [

@@ -1,3 +1,4 @@
+//bytequest/app/(main)/learn/page.tsx
 import { redirect } from "next/navigation";
 
 import { Promo } from "@/components/promo";

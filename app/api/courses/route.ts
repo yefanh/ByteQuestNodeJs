@@ -1,4 +1,4 @@
-//app/api/courses/route.ts
+//bytequest/app/api/courses/route.ts
 import { NextResponse } from "next/server";
 
 import db from "@/db/drizzle";

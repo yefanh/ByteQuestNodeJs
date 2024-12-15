@@ -1,4 +1,4 @@
-//app/admin/page.tsx
+//bytequest/app/admin/page.tsx
 import dynamic from "next/dynamic";
 import { redirect } from "next/navigation";
 // import { getIsAdmin } from "@/lib/admin";

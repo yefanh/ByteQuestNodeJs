@@ -1,3 +1,4 @@
+//bytequest/app/admin/lesson/edit.tsx
 import { SimpleForm, Edit, TextInput, ReferenceInput, NumberInput, required } from "react-admin";
 
 export const LessonEdit = () => {

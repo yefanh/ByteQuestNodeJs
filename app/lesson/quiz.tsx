@@ -1,3 +1,4 @@
+//bytequest/app/lesson/quiz.tsx
 "use client";
 
 import { toast } from "sonner";
@@ -9,8 +10,8 @@ import { useAudio, useWindowSize, useMount } from "react-use";
 
 import { reduceHearts } from "@/actions/user-progress";
 import { useHeartsModal } from "@/store/use-hearts-modal";
-// import { challengeOptions, challenges, userSubscription } from "@/db/schema";
-import { challengeOptions, challenges } from "@/db/schema";
+import { challengeOptions, challenges, userSubscription } from "@/db/schema";
+// import { challengeOptions, challenges } from "@/db/schema";
 import { usePracticeModal } from "@/store/use-practice-modal";
 import { upsertChallengeProgress } from "@/actions/challenge-progress";
 
@@ -29,10 +30,10 @@ type Props ={
     completed: boolean;
     challengeOptions: typeof challengeOptions.$inferSelect[];
   })[];
-  // userSubscription: typeof userSubscription.$inferSelect & {
-  //   isActive: boolean;
-  // } | null;
-  userSubscription: any;
+  userSubscription: typeof userSubscription.$inferSelect & {
+    isActive: boolean;
+  } | null;
+  // userSubscription: any;
 };
 
 export const Quiz = ({

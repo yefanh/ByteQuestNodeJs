@@ -1,3 +1,4 @@
+//bytequest/lib/admin.ts
 import { auth } from "@clerk/nextjs/server"
 
 const adminIds = [

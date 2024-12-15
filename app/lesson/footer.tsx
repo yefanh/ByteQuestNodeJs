@@ -1,3 +1,4 @@
+//bytequest/app/lesson/footer.tsx
 import { useKey, useMedia } from "react-use";
 import { CheckCircle, XCircle } from "lucide-react";
 

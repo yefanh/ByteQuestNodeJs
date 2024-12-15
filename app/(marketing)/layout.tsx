@@ -1,3 +1,4 @@
+//bytequest/app/(marketing)/layout.tsx
 import { Footer } from "./footer";
 import { Header } from "./header";
 

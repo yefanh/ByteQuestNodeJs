@@ -1,3 +1,4 @@
+//bytequest/components/sticky-wrapper.tsx
 type Props = {
   children: React.ReactNode;
 };

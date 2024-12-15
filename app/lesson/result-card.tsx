@@ -1,3 +1,4 @@
+//bytequest/app/lesson/result-card.tsx
 import Image from "next/image";
 
 import { cn } from "@/lib/utils";

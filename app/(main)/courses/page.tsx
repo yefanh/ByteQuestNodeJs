@@ -1,3 +1,4 @@
+//bytequest/app/(main)/courses/page.tsx
 import { getCourses, getUserProgress } from "@/db/queries";
 
 import { List } from "./list";

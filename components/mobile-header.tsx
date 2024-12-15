@@ -1,3 +1,4 @@
+//bytequest/components/mobile-header.tsx
 import { MobileSidebar } from "./mobile-sidebar";
 export const MobileHeader = () => {
   return (

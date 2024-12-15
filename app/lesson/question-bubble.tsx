@@ -1,3 +1,4 @@
+//bytequest/app/lesson/question-bubble.tsx
 import Image from "next/image";
 
 type Props = {

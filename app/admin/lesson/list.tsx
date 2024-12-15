@@ -1,3 +1,4 @@
+//bytequest/app/admin/lesson/list.tsx
 import { Datagrid, List, TextField, ReferenceField, NumberField } from "react-admin";
 
 export const LessonList = () => {

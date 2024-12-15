@@ -1,4 +1,4 @@
-//app/admin/challengeOption/edit.tsx
+//bytequest/app/admin/challengeOption/edit.tsx
 import { SimpleForm, Edit, TextInput, ReferenceInput, required, BooleanInput } from "react-admin";
 
 export const ChallengeOptionEdit = () => {

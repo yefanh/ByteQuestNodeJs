@@ -1,3 +1,4 @@
+//bytequest/app/lesson/layout.tsx
 type Props = {
   children: React.ReactNode;
 };

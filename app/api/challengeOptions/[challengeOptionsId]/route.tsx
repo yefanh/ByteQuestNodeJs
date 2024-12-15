@@ -1,4 +1,4 @@
-//app/api/challengeOptions/[challengeOptionsId]/route.tsx
+//bytequest/app/api/challengeOptions/[challengeOptionsId]/route.tsx
 import { eq } from "drizzle-orm";
 import { NextResponse } from "next/server";
 

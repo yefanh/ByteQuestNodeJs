@@ -1,4 +1,4 @@
-//app/admin/course/create.tsx
+//bytequest/app/admin/course/create.tsx
 import { SimpleForm, Create, TextInput, required } from "react-admin";
 
 export const CourseCreate = () => {

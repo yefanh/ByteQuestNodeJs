@@ -1,3 +1,4 @@
+//bytequest/app/(main)/leaderboard/loading.tsx
 import { Loader } from "lucide-react";
 
 const Loading = () => {

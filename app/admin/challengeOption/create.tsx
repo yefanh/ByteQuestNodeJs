@@ -1,4 +1,4 @@
-//app/admin/challengeOption/create.tsx
+//bytequest/app/admin/challengeOption/create.tsx
 import { SimpleForm, Create, TextInput, ReferenceInput, required, BooleanInput } from "react-admin";
 
 export const ChallengeOptionCreate = () => {
