@@ -1,5 +1,4 @@
-//bytequest/actions/user-progress.ts
-'use server';
+"use server";
 
 import { and, eq } from "drizzle-orm";
 import { redirect } from "next/navigation";
@@ -8,8 +7,7 @@ import { auth, currentUser } from "@clerk/nextjs/server";
 
 import db from "@/db/drizzle";
 // import { POINTS_TO_REFILL } from "@/constants";
-// import { getCourseById, getUserProgress, getUserSubscription } from "@/db/queries";
-import { getCourseById, getUserProgress } from "@/db/queries"
+import { getCourseById, getUserProgress } from "@/db/queries";//, getUserSubscription 
 import { challengeProgress, challenges, userProgress } from "@/db/schema";
 
 export const upsertUserProgress = async (courseId: number) => {
@@ -26,22 +24,19 @@ export const upsertUserProgress = async (courseId: number) => {
     throw new Error("Course not found");
   }
 
-  // throw new Error("Course is empty");
-
-  // TODO: Enable once units and lessons are added
   // if (!course.units.length || !course.units[0].lessons.length) {
   //   throw new Error("Course is empty");
   // }
 
   const existingUserProgress = await getUserProgress();
 
-
   if (existingUserProgress) {
     await db.update(userProgress).set({
       activeCourseId: courseId,
-      userName: user.fullName || "User",
+      userName: user.firstName || "User",
       userImageSrc: user.imageUrl || "/mascot.svg",
     });
+
     revalidatePath("/courses");
     revalidatePath("/learn");
     redirect("/learn");
@@ -50,14 +45,14 @@ export const upsertUserProgress = async (courseId: number) => {
   await db.insert(userProgress).values({
     userId,
     activeCourseId: courseId,
-    userName: user.fullName || "User",
+    userName: user.firstName || "User",
     userImageSrc: user.imageUrl || "/mascot.svg",
   });
+
   revalidatePath("/courses");
   revalidatePath("/learn");
-  redirect("/learn");   
+  redirect("/learn");
 };
-
 
 export const reduceHearts = async (challengeId: number) => {
   const { userId } = await auth();
@@ -113,4 +108,31 @@ export const reduceHearts = async (challengeId: number) => {
   revalidatePath("/quests");
   revalidatePath("/leaderboard");
   revalidatePath(`/lesson/${lessonId}`);
+};
+
+export const refillHearts = async () => {
+  const currentUserProgress = await getUserProgress();
+  const POINTS_TO_REFILL = 100;
+
+  if (!currentUserProgress) {
+    throw new Error("User progress not found");
+  }
+
+  if (currentUserProgress.hearts === 5) {
+    throw new Error("Hearts are already full");
+  }
+
+  if (currentUserProgress.points < POINTS_TO_REFILL) {
+    throw new Error("Not enough points");
+  }
+
+  await db.update(userProgress).set({
+    hearts: 5,
+    points: currentUserProgress.points - POINTS_TO_REFILL,
+  }).where(eq(userProgress.userId, currentUserProgress.userId));
+
+  revalidatePath("/shop");
+  revalidatePath("/learn");
+  revalidatePath("/quests");
+  revalidatePath("/leaderboard");
 };
