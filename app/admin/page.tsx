@@ -9,7 +9,6 @@ import { isAdmin } from "@/lib/admin";
 import DynamicAdminPage from "./DynamicAdminPage";
 
 const AdminPage = async () => {
-  // const { isAdmin } = await getIsAdmin();
 
   if (!isAdmin()) {
     redirect("/");

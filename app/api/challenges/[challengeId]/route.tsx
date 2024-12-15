@@ -1,21 +1,20 @@
-//app/api/courses/[courseId]/route.ts
 import { eq } from "drizzle-orm";
 import { NextResponse } from "next/server";
 
 import db from "@/db/drizzle";
-import { courses } from "@/db/schema";
+import { challenges } from "@/db/schema";
 import { isAdmin } from "@/lib/admin";
 
 export const GET = async (
   req: Request,
-  { params }: { params: { courseId: number } },
+  { params }: { params: { challengeId: number } },
 ) => {
   if (!isAdmin()) {
     return new NextResponse("Unauthorized", { status: 403 });
   }
 
-  const data = await db.query.courses.findFirst({
-    where: eq(courses.id, params.courseId),
+  const data = await db.query.challenges.findFirst({
+    where: eq(challenges.id, params.challengeId),
   });
 
   return NextResponse.json(data);
@@ -23,30 +22,30 @@ export const GET = async (
 
 export const PUT = async (
   req: Request,
-  { params }: { params: { courseId: number } },
+  { params }: { params: { challengeId: number } },
 ) => {
   if (!isAdmin()) {
     return new NextResponse("Unauthorized", { status: 403 });
   }
 
   const body = await req.json();
-  const data = await db.update(courses).set({
+  const data = await db.update(challenges).set({
     ...body,
-  }).where(eq(courses.id, params.courseId)).returning();
+  }).where(eq(challenges.id, params.challengeId)).returning();
 
   return NextResponse.json(data[0]);
 };
 
 export const DELETE = async (
   req: Request,
-  { params }: { params: { courseId: number } },
+  { params }: { params: { challengeId: number } },
 ) => {
   if (!isAdmin()) {
     return new NextResponse("Unauthorized", { status: 403 });
   }
 
-  const data = await db.delete(courses)
-    .where(eq(courses.id, params.courseId)).returning();
+  const data = await db.delete(challenges)
+    .where(eq(challenges.id, params.challengeId)).returning();
 
   return NextResponse.json(data[0]);
 };
