@@ -1,3 +1,4 @@
+//bytequest/components/sidebar.tsx
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
@@ -33,7 +34,7 @@ export const Sidebar = ({ className }: Props) => {
         />
         <SidebarItem 
           label="quests" 
-          href="/quest"
+          href="/quests"
           iconSrc="/quest.svg"
         />
         <SidebarItem 

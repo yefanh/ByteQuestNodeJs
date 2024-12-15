@@ -1,15 +1,14 @@
-import { boolean, integer, pgTable, pgEnum, serial, text, timestamp } from "drizzle-orm/pg-core";
 import { relations } from "drizzle-orm";
-import { UserProgress } from "@/components/user-progress";
+import { boolean, integer, pgEnum, pgTable, serial, text, timestamp } from "drizzle-orm/pg-core";
 
 export const courses = pgTable("courses", {
   id: serial("id").primaryKey(),
   title: text("title").notNull(),
-  imageSrc: text("img_src").notNull(),
+  imageSrc: text("image_src").notNull(),
 });
 
 export const coursesRelations = relations(courses, ({ many }) => ({
-  UserProgress: many(userProgress),
+  userProgress: many(userProgress),
   units: many(units),
 }));
 
@@ -54,7 +53,6 @@ export const challenges = pgTable("challenges", {
   order: integer("order").notNull(),
 });
 
-// each challenge have many changle options
 export const challengesRelations = relations(challenges, ({ one, many }) => ({
   lesson: one(lessons, {
     fields: [challenges.lessonId],
@@ -64,7 +62,6 @@ export const challengesRelations = relations(challenges, ({ one, many }) => ({
   challengeProgress: many(challengeProgress),
 }));
 
-// each challenge option belongs to a challenge
 export const challengeOptions = pgTable("challenge_options", {
   id: serial("id").primaryKey(),
   challengeId: integer("challenge_id").references(() => challenges.id, { onDelete: "cascade" }).notNull(),
@@ -83,7 +80,7 @@ export const challengeOptionsRelations = relations(challengeOptions, ({ one }) =
 
 export const challengeProgress = pgTable("challenge_progress", {
   id: serial("id").primaryKey(),
-  userId: text("user_id").notNull(), //TODO: Comfirm this doesn't break
+  userId: text("user_id").notNull(),
   challengeId: integer("challenge_id").references(() => challenges.id, { onDelete: "cascade" }).notNull(),
   completed: boolean("completed").notNull().default(false),
 });
