@@ -3,6 +3,7 @@ import { ClerkLoaded, ClerkLoading, SignedIn, SignedOut, SignInButton, UserButto
 import Image from 'next/image';
 import { Loader } from "lucide-react";
 import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 
 export const Header = () => {
   return (
@@ -13,7 +14,13 @@ export const Header = () => {
           <h1 className="text-2xl font-extrabold text-green-500 tracking-wide">
             BQuest
           </h1>
-        </div>        
+          <Link href="https://www.duolingo.com" target="_blank" rel="noopener noreferrer">
+          <Button variant="secondary" className="w-full" >
+            Expore here
+          </Button>
+        </Link> 
+        </div> 
+              
         <ClerkLoading>
           <Loader className='h-5 w-5 text-muted-foreground animate-spin' />
         </ClerkLoading>

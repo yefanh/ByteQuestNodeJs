@@ -1,6 +1,6 @@
 //bytequest/db/schema.ts
 import { relations } from "drizzle-orm";
-import { boolean, integer, pgEnum, pgTable, serial, text, timestamp } from "drizzle-orm/pg-core";
+import { boolean, integer, pgEnum, pgTable, serial, text, timestamp, varchar } from "drizzle-orm/pg-core";
 
 export const courses = pgTable("courses", {
   id: serial("id").primaryKey(),
@@ -117,3 +117,18 @@ export const userSubscription = pgTable("user_subscription", {
   stripePriceId: text("stripe_price_id").notNull(),
   stripeCurrentPeriodEnd: timestamp("stripe_current_period_end").notNull(),
 });
+
+// export const users = pgTable("users", {
+//   id: serial("id").primaryKey(),
+//   username: text("username").notNull(),
+//   avatarUrl: text("avatar_url"),
+// });
+
+// export const comments = pgTable("comments", {
+//   id: serial("id").primaryKey(),
+//   lessonId: varchar("lesson_id").notNull(),
+//   userId: varchar("user_id").notNull(),
+//   userName: text("user_name").notNull(),
+//   commentText: text("comment_text").notNull(),
+//   createdAt: timestamp("created_at").defaultNow().notNull(),
+// });

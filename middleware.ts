@@ -1,7 +1,7 @@
 //bytequest/middleware.ts
 import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server'
 
-const isPublicRoute = createRouteMatcher(["/", "/api/webhooks/stripe"])
+const isPublicRoute = createRouteMatcher(["/","/learn", "/api/webhooks/stripe"])
 
 export default clerkMiddleware(async (auth, request) => {
   if (!isPublicRoute(request)) {
