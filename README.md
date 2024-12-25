@@ -1,11 +1,12 @@
-# BQuest - Interactive Language Learning Platform 🌍
+
+# Interactive Language Learning Platform 🌍
 
 [![Next.js](https://img.shields.io/badge/Next.js-14-black)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-3-38B2AC)](https://tailwindcss.com/)
 
 ## Overview
-ByteQuest is an interactive language learning platform that combines gamification with effective learning methodologies. Learn languages through engaging challenges, earn rewards, and track your progress.
+This is an interactive language learning platform that combines gamification with effective learning methodologies. Learn languages through engaging challenges, earn rewards, and track your progress.
 
 ## Tech Stack
 - **Frontend**: Next.js 14, React, TypeScript
@@ -28,13 +29,13 @@ ByteQuest is an interactive language learning platform that combines gamificatio
 ## Getting Started
 
 ### Prerequisites
-\`\`\`bash
+```bash
 node >= 18
 npm >= 9
-\`\`\`
+```
 
 ### Environment Variables
-\`\`\`bash
+```bash
 DATABASE_URL=
 NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=
 CLERK_SECRET_KEY=
@@ -45,10 +46,10 @@ NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=
 STRIPE_API_KEY=
 STRIPE_WEBHOOK_SECRET=
 NEXT_PUBLIC_APP_URL=
-\`\`\`
+```
 
 ### Installation
-\`\`\`bash
+```bash
 # Clone repository
 git clone https://github.com/yourusername/bytequest.git
 
@@ -61,27 +62,27 @@ npm run db:push
 
 # Run development server
 npm run dev
-\`\`\`
+```
 
 ## Project Structure
-\`\`\`
+```
 bytequest/
 ├── app/                # Next.js pages & API routes
 ├── components/         # Reusable components
-├── db/                # Database configuration
-├── lib/               # Utilities
-├── store/             # State management
-└── scripts/           # Database scripts
-\`\`\`
+├── db/                 # Database configuration
+├── lib/                # Utilities
+├── store/              # State management
+└── scripts/            # Database scripts
+```
 
 ## Available Scripts
-\`\`\`bash
+```bash
 npm run dev            # Start development server
 npm run build          # Build production
 npm run start          # Start production server
 npm run db:push        # Update database schema
 npm run db:seed        # Seed database
-\`\`\`
+```
 
 ## License
 MIT
